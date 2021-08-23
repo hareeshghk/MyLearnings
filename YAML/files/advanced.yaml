@@ -1,0 +1,30 @@
+person:
+  name: &name_anc "Mike"
+  occupation: programmer
+  age: !!float 23   # render as float 23.0
+  gpa: !!str 9.8    # "9.8"
+  birthday: 1997-06-10 11:59:00    #  ISO 8601
+  male: true
+  fav_num: 1e+10
+  flaws: null
+  hobbies:
+    - hiking
+    - movies
+  description: >
+    With this I can write multiple lines,
+    but format is not preserved, all lines
+    will come into single line.
+  description2: |
+    With this also I can write multiple lines,
+      but the format is preserved
+      here.
+  # anchoring
+  # this used what ever value given to name in line2
+  id: *name_anc
+  #we can anchor whole key pair as well
+  body: &body_anc
+    val1: value1
+
+  bodycopy:
+    <<: *body_anc  # this will render as val1: value1
+    var2: value2
