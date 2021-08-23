@@ -1,0 +1,62 @@
+# comments written with '#' key
+# everything is key value pairs in yaml files.
+
+# intial yaml
+app: hello-world
+name: "special char so double/single inverted commas needed \n"
+port: 9000
+version: 1.7
+
+# objects
+# add a indentation to make it an object.
+microservices1:
+  app: hello-world
+  port: 9000
+  version: 1.7
+
+
+# list of objects.
+microservices2:
+  - app: hello-world
+    port: 9000
+    version: 1.7
+  - app: hello-world2
+    port: 9001
+    version: 1.8
+
+# list of normal values.
+microservices3:
+  - user-auth
+  - shopping-cart
+
+# multi type objects.
+# array of simple objects can be written in []
+microservices4:
+  - app: hello-world
+    port: 9000
+    version: 1.7
+  - app: hello-world2
+    port: 9001
+    version: ["1.8", 1.9]
+
+# booleans also allowed in 3 ways.
+boolobjects:
+  allowed: true
+  notallowed: false
+  ison: on
+  isoff: off
+  isyes: yes
+  isno: no
+
+# you can use two kinds of indentation for list.
+microservices5:
+  - app: hello-world
+    port: 9000
+    versions:
+    - 1.7
+    - 1.8
+    - 1.9
+    versions2:
+      - 1.7
+      - 1.8
+      - 1.9
