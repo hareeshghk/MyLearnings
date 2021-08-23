@@ -1,0 +1,52 @@
+# multiline string
+microservices: |
+  These lines will be interpreted as multilines only
+  This will also come under this key only.
+
+# single line string breaking into multiple lines.
+microservices2: >
+  Using this a long single line can be broken into multiple
+  lines.
+
+# config map with multi line value.
+kind: ConfigMap
+metadata:
+  name: mosquito-config-file
+data:
+  mosquito.conf: |
+    log_dest stdout
+    log_type all
+    log_timestamp true
+    listener 9001
+
+# pod with multiline
+# using env variable password in command
+apiVersion: v1
+kind: pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: sidecar-test
+      image: curlimages/curl
+      command:
+        - sh
+        - -c
+        - |
+          #!/usr/bin/env bash -e
+          http () {
+              local path="${1}"
+              set -- -XGet -s --fail
+              # some more stuff here
+              curl -k "$@" "http://localhost:5601${path}"
+          }
+          http "/app/kibana"
+    - name: sidecar-test-2
+      image: curlimages/curl
+      command:
+      - sh
+      - -ec
+      - >-
+        mysql -h 127.0.0.1 -u root -p $MYSQL_ROOT_PASSWORD -e 'SELECT 1'

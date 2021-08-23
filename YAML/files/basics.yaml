@@ -6,6 +6,16 @@ app: hello-world
 name: "special char so double/single inverted commas needed \n"
 port: 9000
 version: 1.7
+bignum: 1e+10
+birthday: 1997-06-10 11:59:00    #  ISO 8601
+flaws: null
+friends:
+  - name: hari
+    age: 25
+  - {name: "hari2", age: 26}
+  -
+    name: hari3
+    age: 27
 
 # objects
 # add a indentation to make it an object.
@@ -47,9 +57,11 @@ boolobjects:
   isoff: off
   isyes: yes
   isno: no
+#for multiple yaml in single file use ---
 
+---
 # you can use two kinds of indentation for list.
-microservices5:
+microservices:
   - app: hello-world
     port: 9000
     versions:
